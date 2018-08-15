@@ -18,20 +18,23 @@ class App extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		sendForm(this.state.text)
+		this.setState({
+			text: ''
+		})
 	}
 	
   render () {
     return (
      		 <div className="chatContainer">
      		 	<div className= "roomContainer">
-     		 	{this.props.messages.map(message => (
-     		 		<div>
+     		 	{this.props.messages.map((message, i) => (
+     		 		<div id="room" key={"message" + i}>
      		 			{message.message}
      		 		</div>
      		 		))}
-     		 		</div>
-      			<form onSubmit={this.handleSubmit}>
-      				<input type="text" onChange={this.handleChange} id="text" placeholder="compose message" />
+     		 	</div>
+      			<form id="form" onSubmit={this.handleSubmit}>
+      				<input name="text" id="text" value={this.state.text} onChange={this.handleChange} type="text" placeholder="compose message" />
       				<button type="submit">Send</button>
       			</form>
 	         </div>
