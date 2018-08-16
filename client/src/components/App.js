@@ -26,6 +26,7 @@ class App extends Component {
   render () {
     return (
      		 <div className="chatContainer">
+     		 	<div className="sideBar"></div>
      		 	<div className= "roomContainer">
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
