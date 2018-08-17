@@ -1,52 +1,25 @@
 import React, { Component } from 'react'
+import {Provider} from 'react-redux'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import store from '../actions/store'
 import '../styles/App.css'
-import {connect} from 'react-redux'
-import {sendForm} from '../actions/ChatActions'
-
+import Chat from './Chat'
+import Name from './Name'
 
 class App extends Component {
-	state = {
-		text: ''
-	}
-
-	handleChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		})
-	}
-
-	handleSubmit = (e) => {
-		e.preventDefault()
-		sendForm(this.state.text)
-		this.setState({
-			text: ''
-		})
-	}
-	
-  render () {
-    return (
-     		 <div className="chatContainer">
-     		 	<div className="sideBar"></div>
-     		 	<div className= "roomContainer">
-     		 	{this.props.messages.map((message, i) => (
-     		 		<div id="room" key={"message" + i}>
-     		 			{message.message}
-     		 		</div>
-     		 		))}
-     		 	</div>
-      			<form id="form" onSubmit={this.handleSubmit}>
-      				<input name="text" id="text" value={this.state.text} onChange={this.handleChange} type="text" placeholder="compose message" />
-      				<button type="submit">Send</button>
-      			</form>
-	         </div>
-    )
-  }
+ render() {
+   return (
+    	<Provider store={store}>
+    		<Router>
+    			<div>
+    				<Route exact path='/' component={Name} />
+    				<Route path='/chat' component={Chat} />
+    			</div>
+    		</Router>
+    	</Provider> 
+   )
+ }
 }
 
-function mapStateToProps(appstate) {
-	return {
-		messages: appstate.messages
-	}
-}
+export default App
 
-export default connect(mapStateToProps)(App)

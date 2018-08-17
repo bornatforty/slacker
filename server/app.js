@@ -7,6 +7,9 @@ import socketio from 'socket.io'
 import http from 'http'
 import path from 'path'
 import runsocket from './chat'
+import authRoutes from './routes/auth'
+import jwt from 'express-jwt'
+import protectedRoutes from './routes/user'
 
 const app = express()
 
@@ -15,6 +18,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use('/api', authRoutes) //these are routes that allow either login or register
+app.use('/api', jwt({secret: config.get('jwt.secret')}), protectedRoutes) //access only if token is passed along with request
 
 app.use((req, res, next) => {
   let err = new Error('Not Found')
