@@ -1,6 +1,9 @@
 html{box-sizing: border-box;}
 *, *:before, *:after{box-sizing: inherit;}
 
+body {
+	background-image: radial-gradient(white, black);
+}
 .chatContainer {
 	display: block;
 	font-family: sans-serif;
@@ -14,6 +17,7 @@ html{box-sizing: border-box;}
 	flex-direction: column-reverse;
 	padding: 15px;
 	overflow: scroll;
+	background: white;
 	word-wrap: break-word;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px; 
@@ -43,4 +47,63 @@ button {
 }
 *:focus {
 	outline: none;
+}
+
+.gridContainer {
+	display: flex;
+	margin: 0 auto;
+}
+header {
+	font-size: 5em;
+	font-family: sans-serif;
+	text-align: center;
+	color: white;
+	text-shadow: 5px 5px 0 #000;
+}
+.rotated {
+	background: green;
+	opacity: 0.5;
+	display: inline-block;
+	padding: 6px;
+	color: white;
+	-webkit-transform: rotate(-30deg);
+}
+.rotated:hover {
+
+}
+.grid {
+	width: 30%;
+	height: 600px;
+	margin: 15px;
+	border-radius: 20px;
+}
+
+.one, .three {
+	border: 5px solid orange;
+}
+.one > p, .three > p {
+	color: white;
+	font-size: 3em;
+	font-family: sans-serif;
+	text-align: center;
+	padding-top: 300px;
+	text-shadow: 2px 2px 1px orange;
+}
+.two {
+	border: 5px solid green;
+}
+.two > p {
+	color: white;
+	font-size: 3em;
+	font-family: sans-serif;
+	text-align: center;
+	padding-top: 300px;
+	text-shadow: 3px 3px 1px green;
+}
+.fa-smile-beam {
+	color: orange;
+}
+.timestamp {
+	background: #ccc;
+	margin-right: 10px;
 }

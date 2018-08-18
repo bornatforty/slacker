@@ -1,7 +1,8 @@
 import io from 'socket.io-client'
 import store from './store'
 
-const socket=io.connect('http://10.68.0.110:3001')
+
+const socket=io.connect('http://192.168.1.136:3001')
 
 socket.on('message room', function(data) {
 	store.dispatch({
@@ -11,8 +12,10 @@ socket.on('message room', function(data) {
 })
 
 export function sendForm(message) {
+	const timestamp = new Date().toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true})
 	socket.emit('message room', {
-		message: message
+		message: message,
+		timestamp: timestamp
 	})
 }
 

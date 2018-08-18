@@ -30,7 +30,8 @@ class Chat extends Component {
      		 	<div className= "roomContainer">
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
-     		 			{message.name}: {message.message}
+     		 			<span className="timestamp">{message.timestamp}</span>
+     		 			<span className="chatstuff">{message.name}: {message.message}</span>
      		 		</div>
      		 		))}
      		 	</div>
@@ -45,7 +46,7 @@ class Chat extends Component {
 
 function mapStateToProps(appstate) {
 	return {
-		messages: appstate.chatReducer.messages
+		messages: appstate.chatReducer.messages //with multiple reducers you should reference the specific one
 	}
 }
 

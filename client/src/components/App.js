@@ -3,6 +3,7 @@ import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import store from '../actions/store'
 import '../styles/App.css'
+import 'font-awesome/css/font-awesome.min.css'
 import Chat from './Chat'
 import Name from './Name'
 
