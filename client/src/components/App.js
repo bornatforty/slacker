@@ -12,7 +12,7 @@ class App extends Component {
    return (
     	<Provider store={store}>
     		<Router>
-    			<div>
+    			<div id="container">
     				<Route exact path='/' component={Name} />
     				<Route path='/chat' component={Chat} />
     			</div>

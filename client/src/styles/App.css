@@ -9,9 +9,11 @@ body {
 	font-family: sans-serif;
 }
 .roomContainer {
-	width: 800px;
+	width: 100%;
 	height: 400px;
-	border: 5px solid green;
+	border-left: 5px solid green;
+	border-right: 5px solid green;
+	border-bottom: 5px solid green;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column-reverse;
@@ -23,8 +25,8 @@ body {
 	border-bottom-right-radius: 20px; 
 }
 .sideBar {
-	height: 200px;
-	width: 800px;
+	height: 150px;
+	width: 100%;
 	margin: 0 auto;
 	background: radial-gradient(white, green);
 }
@@ -35,7 +37,7 @@ body {
 }
 #text {
 	padding: 5px;
-	width: 600px;
+	width: 75%;
 	border: 4px solid green;
 	border-radius: 20px;
 }
@@ -52,6 +54,7 @@ button {
 .gridContainer {
 	display: flex;
 	margin: 0 auto;
+	justify-content: center;
 }
 header {
 	font-size: 5em;
@@ -69,11 +72,11 @@ header {
 	-webkit-transform: rotate(-30deg);
 }
 .rotated:hover {
-
+	-webkit-transform: (180deg);
 }
 .grid {
-	width: 30%;
-	height: 600px;
+	width: 80%;
+	height: 300px;
 	margin: 15px;
 	border-radius: 20px;
 }
@@ -91,6 +94,7 @@ header {
 }
 .two {
 	border: 5px solid green;
+	padding: 10px;
 }
 .two > p {
 	color: white;
@@ -100,10 +104,13 @@ header {
 	padding-top: 300px;
 	text-shadow: 3px 3px 1px green;
 }
-.fa-smile-beam {
-	color: orange;
+#login {
+	font-family: sans-serif;
+	text-align: center;
+	margin-top: 50px;
 }
+
 .timestamp {
-	background: #ccc;
+	background: rgba(0,255,0,0.2);
 	margin-right: 10px;
 }

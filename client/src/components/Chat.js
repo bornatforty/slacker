@@ -31,7 +31,7 @@ class Chat extends Component {
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
      		 			<span className="timestamp">{message.timestamp}</span>
-     		 			<span className="chatstuff">{message.name}: {message.message}</span>
+     		 			<span className="chatstuff">{message.name}:</span> <span className="messagestuff">{message.message}</span>
      		 		</div>
      		 		))}
      		 	</div>
