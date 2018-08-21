@@ -14,7 +14,11 @@ body {
 	padding: 10px;
 	text-align: center;
 }
-
+.registerContainer {
+	margin: 0 auto;
+	width: 75%;
+	padding: 10px;
+}
 
 *:focus {
 	outline: none;
@@ -73,26 +77,31 @@ header {
 	padding-top: 300px;
 	text-shadow: 3px 3px 1px green;
 }
-#login {
+#login, #register {
 	font-family: sans-serif;
 	text-align: center;
 	margin-top: 50px;
 }
-#login > div {
+#login > div, #register > div {
 	margin-bottom: 5px;
 }
-#login > div > input {
+#login > div > input, #register > div > input {
 	padding: 5px;
 }
 
 .registerhere {
-	background: #888;
+	background: green;
 	width: 60%;
 	margin: 20px auto;
-	color: #ccc;
+	color: white;
 	padding: 10px;
 	box-shadow: 2px 2px 1px #fff;
 	border-radius: 20px;
+}
+.registerhere a {
+	color: white;
+	text-decoration: none;
+	font-family: sans-serif;
 }
 .activeUsers {
 	border-right: 3px solid #fff;
@@ -103,10 +112,6 @@ header {
 }
 .activeRooms > button {
 	margin: 10px;
-}
-.chatstuff {
-	color: green;
-	font-weight: bold;
 }
 
 .room2 {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import '../styles/App.css'
 import '../styles/Chat.css'
 import {connect} from 'react-redux'
@@ -32,7 +32,7 @@ class Chat extends Component {
      		 		<div className="activeUsers">
      		 		</div>
      		 		<div className="activeRooms">
-     		 			<Link to='/Chat' className="room1">Room 1</Link>
+     		 			<Link to='/Chat1' className="room1">Room 1</Link>
      		 			<Link to='/Chat2' className="room2">Room 2</Link>
      		 			<Link to='/Chat3' className="room3">Room 3</Link>
      		 			
@@ -42,7 +42,7 @@ class Chat extends Component {
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
      		 			<span className="timestamp">{message.timestamp}</span>
-     		 			<span className="chatstuff">{message.name}:</span> <span className="messagestuff">{message.message}</span>
+     		 			<span className="chatstuff">{message.image} {message.name}:</span> <span className="messagestuff">{message.message}</span>
      		 		</div>
      		 		))}
      		 	</div>

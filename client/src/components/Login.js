@@ -1,52 +1,63 @@
 import React, { Component } from 'react'
-import {login} from '../actions/auth'
-import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom' 
+import {signin} from '../actions/ChatActions'
+import {Link} from 'react-router-dom'
+import 'font-awesome/css/font-awesome.min.css'
+import {withAuth} from './Authentication'
 
 class Login extends Component {
 	state = {
-		username: '',
-		password: ''
+		name: '',
+      password: '',
+      redirectToReferrer: false
 	}
-	handleChange = e => {
+
+	handleSubmit = (e) => {
+		signin(this.state.name)
+		this.props.history.push('/Chat1')
+	}
+
+	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
 	}
 
-	handleSubmit = e => {
-		e.preventDefault()
-		login(this.state.username, this.state.password)
+   login = () => {
+      this.props.signin(() => {
+         this.setState({
+            redirectToReferrer: true
+         })
+      })
+   }
 
-	}
+   logout = () => {
+      this.props.signout()
+   }
 
  render() {
- 	if (this.props.isAuthenticated) {
- 		return <Redirect to="/Chat" />
- 	} else {
    return (
-   		<div>
-   			<form onSubmit={this.handleSubmit}>
-   				<div>
-   					<input type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="Enter Username" />
+   		<div className="landingContainer">
+   			<header>Slack<span className="rotated">er</span></header>
+   			<div className="gridContainer">
+   				<div className="grid one">
+   					<form id="login" onSubmit={this.handleSubmit}>
+   						<div>
+   							<input type="text" value={this.state.name} onChange={this.handleChange} name="name" placeholder="Enter your name" />
+   						</div>
+   						<div>
+   							<input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
+   						</div>
+   						<button type="submit">Sign In</button>
+   						<div className="registerhere">
+   							<Link to="/register">New user? Register here</Link>
+   						</div>
+	   				</form>
    				</div>
-   				<div>
-   					<input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
-   				</div>
-   				<div>
-   					<button type="submit">Login</button>
-   				</div>
-   			</form>
-   		</div> 
- 	  )
-	}
-  }
+   			</div>
+   		</div>
+     
+   )
+ }
 }
 
-function mapStateToProps(appstate) {
-	return {
-		isAuthenticated: appstate.isAuthenticated
-	}
-}
-
-export default connect(mapStateToProps)(Login)
+export default Login

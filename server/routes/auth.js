@@ -33,10 +33,12 @@ router.post('/login', (req, res, next) => {
 router.post('/register', (req, res, next) => {
 		const username = req.body.username
 		const password = sha512(req.body.password).toString('hex')
+		const image = req.body.image
+		const email = req.body.email
 
-		const sql = 'INSERT INTO users (username, password) VALUES (?, ?)'
+		const sql = 'INSERT INTO users (username, password, image, email) VALUES (?, ?, ?, ?)'
 
-		conn.query(sql, [username, password], (err, results, fields) => {
+		conn.query(sql, [username, password, image, email], (err, results, fields) => {
 			res.json({
 				message: 'User created'
 			})

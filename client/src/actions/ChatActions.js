@@ -1,5 +1,6 @@
 import io from 'socket.io-client'
 import store from './store'
+import axios from 'axios'
 
 
 const socket=io.connect('http://10.68.0.114:3001')
@@ -47,6 +48,14 @@ export function sendForm3(message) {
 	})
 }
 
-export function signin(name) {
-	socket.emit('signin', name)
+export function signin(name, password) {
+	socket.emit('signin', name, password)
 }
+
+export function registration(info) {
+	axios.post('/api/register', info).then(resp => {
+
+	})
+
+}
+

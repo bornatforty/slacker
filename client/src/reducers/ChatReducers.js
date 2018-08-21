@@ -4,7 +4,7 @@ const initialState = {
 	messages3: [],
 	username: '',
 	isAuthenticated: false
-}
+} //keep all messages distinct from each other so none appear in the wrong rooms
 
 export default function(state = initialState, action) {
 	switch(action.type) {
@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
 		case 'MESSAGE2':
 			return {...state, messages2:[action.payload, ...state.messages2]}
 		case 'MESSAGE3':
-			return {...state, messages3:[action.payload, ...state.messages3]}
+			return {...state, messages3:[action.payload, ...state.messages3]} //each chat room has its own switch for messages to keep them separate
 		case "LOGIN_SUCCESS":
 			return {...state, username: action.payload.username, isAuthenticated: true}
 		case "LOGIN_FAILURE":
