@@ -25,8 +25,16 @@ class Name extends Component {
    			<div className="gridContainer">
    				<div className="grid one">
    					<form id="login" onSubmit={this.handleSubmit}>
-   						<input type="text" value={this.state.name} onChange={this.handleChange} name="name" placeholder="Enter your name" />
+   						<div>
+   							<input type="text" value={this.state.name} onChange={this.handleChange} name="name" placeholder="Enter your name" />
+   						</div>
+   						<div>
+   							<input type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
+   						</div>
    						<button type="submit">Sign In</button>
+   						<div>
+   							<button type="submit" className="registerhere">New user? Register here</button>
+   						</div>
 	   				</form>
    				</div>
    			</div>

@@ -5,6 +5,8 @@ import store from '../actions/store'
 import '../styles/App.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Chat from './Chat'
+import Chat2 from './Chat2'
+import Chat3 from './Chat3'
 import Name from './Name'
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
     			<div id="container">
     				<Route exact path='/' component={Name} />
     				<Route path='/chat' component={Chat} />
+                    <Route path='/chat2' component={Chat2} />
+                    <Route path='/chat3' component={Chat3} />
     			</div>
     		</Router>
     	</Provider> 

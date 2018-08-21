@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import '../styles/App.css'
-import '../styles/Chat.css'
+import '../styles/Chat2.css'
 import {connect} from 'react-redux'
-import {sendForm1} from '../actions/ChatActions'
+import {sendForm2} from '../actions/ChatActions'
 import {Link} from 'react-router-dom'
 
 
-class Chat extends Component {
+class Chat2 extends Component {
 	state = {
 		text: ''
 	}
@@ -19,7 +19,7 @@ class Chat extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		sendForm1(this.state.text)
+		sendForm2(this.state.text)
 		this.setState({
 			text: ''
 		})
@@ -28,7 +28,7 @@ class Chat extends Component {
   render () {
     return (
      		 <div className="chatContainer">
-     		 	<div className="sideBar">
+     		 	<div className="sideBar2">
      		 		<div className="activeUsers">
      		 		</div>
      		 		<div className="activeRooms">
@@ -38,17 +38,17 @@ class Chat extends Component {
      		 			
      		 		</div>
      		 	</div>
-     		 	<div className= "roomContainer">
+     		 	<div className= "roomContainer2">
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
-     		 			<span className="timestamp">{message.timestamp}</span>
+     		 			<span className="timestamp2">{message.timestamp}</span>
      		 			<span className="chatstuff">{message.name}:</span> <span className="messagestuff">{message.message}</span>
      		 		</div>
      		 		))}
      		 	</div>
       			<form id="form" onSubmit={this.handleSubmit}>
-      				<input name="text" id="text" value={this.state.text} onChange={this.handleChange} type="text" placeholder="compose message" />
-      				<button id="button" type="submit">Send</button>
+      				<input name="text" id="text2" value={this.state.text} onChange={this.handleChange} type="text" placeholder="compose message" />
+      				<button id="button2" type="submit">Send</button>
       			</form>
 	         </div>
     )
@@ -57,8 +57,8 @@ class Chat extends Component {
 
 function mapStateToProps(appstate) {
 	return {
-		messages: appstate.chatReducer.messages1 //with multiple reducers you should reference the specific one
+		messages: appstate.chatReducer.messages2 //with multiple reducers you should reference the specific one
 	}
 }
 
-export default connect(mapStateToProps)(Chat)
+export default connect(mapStateToProps)(Chat2)

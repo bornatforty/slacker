@@ -4,16 +4,44 @@ import store from './store'
 
 const socket=io.connect('http://10.68.0.114:3001')
 
-socket.on('message room', function(data) {
+socket.on('message room1', function(data) {
 	store.dispatch({
-		type: 'MESSAGE',
+		type: 'MESSAGE1',
 		payload: data
 	})
 })
 
-export function sendForm(message) {
+export function sendForm1(message) {
 	const timestamp = new Date().toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true})
-	socket.emit('message room', {
+	socket.emit('message room1', {
+		message: message,
+		timestamp: timestamp
+	})
+}
+socket.on('message room2', function(data) {
+	store.dispatch({
+		type: 'MESSAGE2',
+		payload: data
+	})
+})
+
+export function sendForm2(message) {
+	const timestamp = new Date().toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true})
+	socket.emit('message room2', {
+		message: message,
+		timestamp: timestamp
+	})
+}
+socket.on('message room3', function(data) {
+	store.dispatch({
+		type: 'MESSAGE3',
+		payload: data
+	})
+})
+
+export function sendForm3(message) {
+	const timestamp = new Date().toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true})
+	socket.emit('message room3', {
 		message: message,
 		timestamp: timestamp
 	})
