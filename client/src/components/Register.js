@@ -18,7 +18,7 @@ class Register extends Component {
 			image: this.state.image,
 			email: this.state.email
 		})
-		this.props.history.push('/Chat1')
+		this.props.history.push('/chat1')
 	}
 
 	handleChange = (e) => {

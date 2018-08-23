@@ -46,3 +46,9 @@
 	color: orange;
 	font-weight: bold;
 }
+.chatstuff2 > img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: url('../assets/anon.jpg');
+}

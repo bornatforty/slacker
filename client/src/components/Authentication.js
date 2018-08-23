@@ -4,7 +4,7 @@ import AuthService from '../lib/auth'
 
 export const api = new AuthService()
 
-const AuthContext = React. createContext({
+const AuthContext = React.createContext({
 	isAuthenticated: false,
 	redirectURL: '/login',
 	defaultRedirect: '/'
@@ -32,7 +32,7 @@ export class Authentication extends Component {
 	}
 
 	signout = () => {
-		api.signout()
+		api.logout()
 		this.setState({
 			isAuthenticated: false
 		})

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Authentication, AuthRoute} from './Authentication'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import '../styles/App.css'
@@ -14,16 +14,14 @@ import {Provider} from 'react-redux'
 const App = props => (
     <Provider store={store}>
     <Router>
-        <Authentication
-            redirectURL='/login'
-            defaultRedirect='/'>
+        <Authentication redirectURL='/login' defaultRedirect='/chat1'>
             <div id="container">
-                    <Route exact path='/' render={() =>(<Redirect to='/login' />)} />
-                    <Route path='/login' component={Login} />
-                    <Route path='/register' component={Register} />
-                    <Route path='/chat1' component={Chat} />
-                    <Route path='/chat2' component={Chat2} />
-                    <Route path='/chat3' component={Chat3} />
+                <Route exact path='/' render={() =>(<Redirect to='/chat1' />)} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
+                <AuthRoute path='/chat1' component={Chat} />
+                <AuthRoute path='/chat2' component={Chat2} />
+                <AuthRoute path='/chat3' component={Chat3} />
              </div>
         </Authentication>
     </Router>

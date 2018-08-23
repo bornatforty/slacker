@@ -128,3 +128,11 @@ a {
 	padding: 10px;
 	border-radius: 20px;
 }
+.profileContainer > button {
+	background: black;
+	color: white;
+	box-shadow: 2px 2px 1px #fff;
+	padding: 10px;
+	border-radius: 20px;
+	font-family: sans-serif;
+}

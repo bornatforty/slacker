@@ -7,14 +7,15 @@ class AuthService {
 	}
 
 	login = (username, password) => {
+		this.logout()
 		return this.fetch(`${this.domain}/${this.authPath}`, {
 			method: 'POST',
 			body: JSON.stringify({
 				username, password
 			})
-		}).then(res => {
-			this.setToken(res.token)
-			return Promise.resolve(res)
+		}).then(data => {
+			this.setToken(data.token)
+			return Promise.resolve(data)
 		})
 	}
 
@@ -51,34 +52,34 @@ class AuthService {
 	get = (url) => {
 		return this.fetch(url, {
 			method: 'GET'
-		}).then(resp => resp.json())
+		})
 	}
 
 	put = (url, data) => {
 		return this.fetch(url, {
 			method: 'PUT',
 			body: JSON.stringify(data)
-		}).then(resp => resp.json())
+		})
 	}
 
 	post = (url, data) => {
 		return this.fetch(url, {
 			method: 'POST',
 			body: JSON.stringify(data)
-		}).then(resp => resp.json)
+		})
 	}
 
 	patch = (url, data) => {
 		return this.fetch(url, {
 			method: 'PATCH',
 			body: JSON.stringify(data)
-		}).then(resp => resp.json())
+		})
 	}
 
 	delete = (url) => {
 		return this.fetch(url, {
 			method: 'DELETE'
-		}).then(resp => resp.json)
+		})
 	}
 
 	fetch = (url, options) => {
@@ -96,7 +97,7 @@ class AuthService {
 			...options
 		})
 		.then(this._checkStatus)
-		.then(response => response.json)
+		.then(response => response.json())
 	}
 
 	_checkStatus = (response) => {

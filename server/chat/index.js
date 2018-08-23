@@ -1,3 +1,5 @@
+import conn from '../db/conn'
+
 function runsocket(io) {
 
 
@@ -10,26 +12,45 @@ function runsocket(io) {
     socket.join('room3')
     console.log('connected')
 
-    socket.on('message room1', function(data) {
-    	const obj=Object.assign(data, {
-    		name: socket.name
-    	})
-    	io.to('room1').emit('message room1', obj)
+    socket.on('/chat1', function(data) {
+      console.log(data)
+      const sql = `INSERT INTO chat1 (username, timestamp, message, image) 
+                   VALUES (?, ?, ?, ? )`
+
+      conn.query(sql, [data.username, data.timestamp, data.message, data.image], (err, results, fields) => {
+        const obj=Object.assign(data, {
+          name: socket.name
+        })
+        io.to('room1').emit('/chat1', obj)
+      })
     })
-    socket.on('message room2', function(data) {
-      const obj=Object.assign(data, {
+
+
+    socket.on('/chat2', function(data) {
+      const sql = `INSERT INTO chat2 (username, timestamp, message, image) 
+                   VALUES (?, ?, ?, ? )`
+
+      conn.query(sql, [data.username, data.timestamp, data.message, data.image], (err, results, fields) => {
+        const obj=Object.assign(data, {
         name: socket.name
       })
-      io.to('room2').emit('message room2', obj)
+      io.to('room2').emit('/chat2', obj)
+      })
     })
-    socket.on('message room3', function(data) {
-      const obj=Object.assign(data, {
+
+
+    socket.on('/chat3', function(data) {
+      const sql = `INSERT INTO chat3 (username, timestamp, message, image) 
+                   VALUES (?, ?, ?, ? )`
+
+      conn.query(sql, [data.username, data.timestamp, data.message, data.image], (err, results, fields) => {
+        const obj=Object.assign(data, {
         name: socket.name
       })
-      io.to('room3').emit('message room3', obj)
+      io.to('room3').emit('/chat3', obj)
+      })
     })
   })
-  
 }
 
 export default runsocket

@@ -10,12 +10,12 @@ router.post('/login', (req, res, next) => {
 	const username= req.body.username
 	const password= sha512(req.body.password).toString('hex')
 
-	const sql = 'SELECT count(1) as count FROM users WHERE username = ? AND password = ?'
+	const sql = 'SELECT username, image FROM users WHERE username = ? AND password = ?'
 
 	conn.query(sql, [username, password], (err, results, fields) => {
 		console.log(results)
-		if (results[0].count > 0) {
-			const token = jwt.sign({"username": username}, config.get('jwt.secret'))
+		if (results.length > 0) {
+			const token = jwt.sign({"username": username, "image": results[0].image}, config.get('jwt.secret'))
 			
 			console.log(token)
 
