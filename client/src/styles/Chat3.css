@@ -25,6 +25,8 @@
 .room3 {
 	background: purple;
 	color: white;
+	border-radius: 20px;
+	padding: 5px;
 }
 #text3 {
 	padding: 5px;

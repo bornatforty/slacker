@@ -4,7 +4,7 @@ import axios from 'axios'
 import { api } from '../components/Authentication'
 
 
-const socket=io.connect('http://192.168.1.6:3001')
+const socket=io.connect('http://localhost:3001')
 
 socket.on('/chat1', function(data) {
 	store.dispatch({

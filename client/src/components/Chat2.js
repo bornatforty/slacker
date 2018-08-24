@@ -41,9 +41,9 @@ class Chat2 extends Component {
      		 		<div className="activeUsers">
      		 		</div>
      		 		<div className="activeRooms">
-     		 			<Link to='/chat1' className="room1">Room 1</Link>
-     		 			<Link to='/chat2' className="room2">Room 2</Link>
-     		 			<Link to='/chat3' className="room3">Room 3</Link>
+     		 			<Link to='/chat1'><button type="button" className="room1">Room 1</button></Link>
+              <Link to='/chat2'><button type="button" className="room2">Room 2</button></Link>
+              <Link to='/chat3'><button type="button" className="room3">Room 3</button></Link>
      		 		</div>
               <div className="profileContainer">
               <button onClick={this.logout}>Logout</button>

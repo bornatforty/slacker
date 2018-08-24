@@ -6,11 +6,13 @@ import {sendForm1, getChats1} from '../actions/ChatActions'
 import {Link} from 'react-router-dom'
 import {withAuth} from './Authentication'
 import EmojiPicker from 'emoji-picker-react'
+import {emoji, EmojiConvertor} from 'emoji-js'
 
 
 class Chat extends Component {
 	state = {
-		text: ''
+		text: '',
+    renderEmoji: false
 	}
 
   componentDidMount() {
@@ -27,7 +29,8 @@ class Chat extends Component {
 		e.preventDefault()
 		sendForm1(this.state.text)
 		this.setState({
-			text: ''
+			text: '',
+      renderEmoji: false
 		})
 	}
 
@@ -36,10 +39,12 @@ class Chat extends Component {
       renderEmoji: !this.state.renderEmoji
     })
   }
+
   getEmoji = (code, data) => {
-    var output = `:${data.name}:`
+    var emoji = new EmojiConvertor()
+    var output = emoji.replace_colons(`:${data.name}:`)
     this.setState({
-      message: this.state.message +' '+ output,
+      text: this.state.text +' '+ output,
       renderEmoji: false
     })
   }
@@ -55,9 +60,9 @@ class Chat extends Component {
      		 		<div className="activeUsers">
      		 		</div>
      		 		<div className="activeRooms">
-     		 			<Link to='/chat1' className="room1">Room 1</Link>
-     		 			<Link to='/chat2' className="room2">Room 2</Link>
-     		 			<Link to='/chat3' className="room3">Room 3</Link>
+     		 			<Link to='/chat1'><button type="button" className="room1">Room 1</button></Link>
+     		 			<Link to='/chat2'><button type="button" className="room2">Room 2</button></Link>
+     		 			<Link to='/chat3'><button type="button" className="room3">Room 3</button></Link>
      		 		</div>
             <div className="profileContainer">
               <button onClick={this.logout}>Logout</button>
@@ -67,12 +72,12 @@ class Chat extends Component {
      		 	{this.props.messages.map((message, i) => (
      		 		<div id="room" key={"message" + i}>
      		 			<span className="timestamp">{message.timestamp}</span>
-     		 			<span className="chatstuff"><img id="avatar" src={message.image}/> {message.username}:</span> <span className="messagestuff">{message.message}</span>
+     		 			<span className="chatstuff"><img id="avatar" alt='' src={message.image}/> {message.username}:</span> <span className="messagestuff">{message.message}</span>
      		 		</div>
      		 		))}
      		 	</div>
       			<form id="form" onSubmit={this.handleSubmit}>
-            <button type="button" id="emoji" onClick={this.toggleEmoji}><i className="fa fa-user"></i></button>
+            <button type="button" id="emoji" onClick={this.toggleEmoji}><i className="fa fa-smile-o fa-2x"></i></button>
       				<input name="text" id="text" value={this.state.text} onChange={this.handleChange} type="text" placeholder="compose message" />
       				<button id="button" type="submit">Send</button>
               <div>

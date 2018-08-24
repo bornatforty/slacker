@@ -105,22 +105,13 @@ header {
 }
 .activeUsers {
 	border-right: 3px solid #fff;
-	width: 50%;
+	width: 40%;
 }
 .activeRooms {
-	padding: 10px;
+	width: 30%;
 }
-.activeRooms > button {
+.activeRooms > a > button {
 	margin: 10px;
-}
-
-.room2 {
-	background: orange;
-	color: white;
-}
-.room3 {
-	background: purple;
-	color: white;
 }
 a {
 	text-decoration: none;

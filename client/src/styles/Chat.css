@@ -25,6 +25,8 @@
 .room1 {
 	background: green;
 	color: white;
+	border-radius: 20px;
+	padding: 5px;
 }
 #text {
 	padding: 5px;
@@ -52,4 +54,9 @@
 	border-radius: 50%;
 	background: url('../assets/anon.jpg') no-repeat;
 }
-
+#emoji {
+	color: green;
+	background: white;
+	margin-right: 3px;
+	border-radius: 50%;
+}
